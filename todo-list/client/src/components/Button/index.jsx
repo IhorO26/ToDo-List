@@ -1,7 +1,8 @@
-import { Button} from 'antd';
+import { Button } from "@mui/material"
+
 export const ButtonComponent = ()=>{
     return(
-        <Button type="dashed">Button 1</Button>
+        <Button type="dashed">Button </Button>
     )
         
 }
