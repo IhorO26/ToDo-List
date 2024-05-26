@@ -1,5 +1,8 @@
+import { Button } from "@mui/material"
+import SignLanguageIcon from '@mui/icons-material/SignLanguage';
+
 export const Date = () =>{
     return(
-        <span>DateSpace</span>
+        <Button><SignLanguageIcon/></Button>
     )
 }
