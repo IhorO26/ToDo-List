@@ -10,6 +10,8 @@ export const ToDoInput = ({name}) => {
     paddingBlockEnd={"40px"}>
         <Box >        
             <Typography fontSize={"45px"}>Hello {name}</Typography>
+        </Box>
+        <Box>
             <Typography fontSize={"35px"}>What's the plans for today?</Typography>
         </Box>
         <Box width={"600px"} display={"flex"}>

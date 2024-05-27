@@ -5,31 +5,25 @@ import { Box, Button, Stack, Typography } from '@mui/material';
 import { ButtonComponent } from './components/Button';
 import { ToDoInput } from './components/ToDoInput';
 import { ToDoField } from './components/ToDoField';
-import { LanguageChange } from './LanguageChange';
-import { SettingsTab } from './components/SettingsTab';
+import { Head } from './components/Head';
 
 
 
 function App() {
   return (
-      <main>
-      <Stack height={"100px"} bgcolor={"black"} flexDirection={"row"} justifyContent={"space-between"} paddingInline={"50px"} alignItems={"center"}>
-        <Typography fontSize={"42px"}>TODO List</Typography>
-        <Box fontSize={"50px"} display={"flex"} color={"white"}>
-          <SettingsTab/>
-          <LanguageChange/>
-          <Typography color={"white"}>Time</Typography>
-        </Box>
-      </Stack>
+      <main><div>   
+        <Head/>
+      </div>
       <div>
         <Stack>
         <Box>
           <ToDoInput name = "User"/>
         </Box>
         <Box>
-        <ToDoField task = "Homework"/>
+        <ToDoField task = "Do homework"/>
         <ToDoField task = "Wash a car"/>
-        <ToDoField task = "fix da toilet"/>
+        <ToDoField task = "poop"/>
+        <ToDoField task = "222"/>
         </Box>
         </Stack>
         </div>
