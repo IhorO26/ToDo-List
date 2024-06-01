@@ -5,19 +5,23 @@ import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 import { LanguageChange } from "../../LanguageChange";
 
 
-export const ToDoInput = ({name}) => {
+export const ToDoInput = ({ name, addNewTask }) => {
+    const onClick = () => {
+        const newTask = "newTask"
+        addNewTask(newTask)
+    }
     return (<Stack display={"flex"} alignItems={"center"} paddingTop={"50px"}
-    paddingBlockEnd={"40px"}>
-        <Box >        
+        paddingBlockEnd={"40px"}>
+        <Box >
             <Typography fontSize={"45px"}>Hello {name}</Typography>
         </Box>
         <Box>
             <Typography fontSize={"35px"}>What's the plans for today?</Typography>
         </Box>
         <Box width={"600px"} display={"flex"}>
-            <TextField fullWidth label = "What To Do?" variant="standard" sx={{borderRadius:'12px'}}/>
-            <ButtonComponent variant = "outlined" icon = {<AddTwoToneIcon/>} />
+            <TextField fullWidth label="What To Do?" variant="standard" sx={{ borderRadius: '12px' }} />
+            <ButtonComponent onClick={onClick} variant="outlined" icon={<AddTwoToneIcon />} />
         </Box>
-        </Stack>
+    </Stack>
     );
 };

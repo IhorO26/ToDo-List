@@ -1,10 +1,10 @@
 import SettingsApplicationsSharpIcon from '@mui/icons-material/SettingsApplicationsSharp';
 import { Box } from '@mui/material';
 
- export const SettingsTab = () =>{
-    return(
-       <Box>
-        <SettingsApplicationsSharpIcon />
-       </Box>
-    )
+export const SettingsTab = () => {
+   return (
+      <Box>
+         <SettingsApplicationsSharpIcon />
+      </Box>
+   )
 }
