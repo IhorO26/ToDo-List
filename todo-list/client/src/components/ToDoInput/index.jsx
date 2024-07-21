@@ -3,13 +3,25 @@ import { Box, Stack, TextField, Typography } from "@mui/material";
 import { ButtonComponent } from "../Button";
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
 import { LanguageChange } from "../../LanguageChange";
+import { useState } from "react";
+import { ToDoField } from "../ToDoField";
 
 
 export const ToDoInput = ({ name, addNewTask }) => {
+    const [task, setTask] = useState('')
+    const [tasks, setTasks] = useState([]);
+
+
+    const handleInputChange = (event) =>{
+        setTask(event.target.value)
+    };
+
     const onClick = () => {
-        const newTask = "newTask"
-        addNewTask(newTask)
-    }
+        if (task.trim()) {
+            setTasks([task, ...tasks]);
+            setTask('');
+        }
+    };
     return (<Stack display={"flex"} alignItems={"center"} paddingTop={"50px"}
         paddingBlockEnd={"40px"}>
         <Box >
@@ -19,9 +31,14 @@ export const ToDoInput = ({ name, addNewTask }) => {
             <Typography fontSize={"35px"}>What's the plans for today?</Typography>
         </Box>
         <Box width={"600px"} display={"flex"}>
-            <TextField fullWidth label="What To Do?" variant="standard" sx={{ borderRadius: '12px' }} />
-            <ButtonComponent onClick={onClick} variant="outlined" icon={<AddTwoToneIcon />} />
+            <TextField fullWidth label="What To Do?" value={task} onChange={handleInputChange} variant="standard" sx={{ borderRadius: '12px' } }  />
+            <ButtonComponent onClick = {onClick} variant="outlined" icon={<AddTwoToneIcon />} />
         </Box>
+        <Box width={"600px"} marginTop={"20px"}>
+                {tasks.map((task, index) => (
+                    <ToDoField key={index} task={task} />
+                ))}
+            </Box>
     </Stack>
     );
 };

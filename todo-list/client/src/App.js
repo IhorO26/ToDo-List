@@ -12,12 +12,7 @@ import { Toggle, UserForm } from './Toggle';
 
 
 function App() {
-  const [tasks, setTasks] = useState(["Do homework", "Wash a car", "poop", "eat"])
-  //const tasks = ["Do homework", "Wash a car", "poop", "eat"]
-  const addNewTask = (task) => {
-    console.log(task);
-    setTasks([...tasks, task])
-  }
+ 
   return (
     <main><div>
       <Head />
@@ -25,12 +20,10 @@ function App() {
       <div>
         <Stack>
           <Box>
-            <ToDoInput name="User" addNewTask={addNewTask} />
+            <ToDoInput name="User" />
           </Box>
           <Box>
-            {
-              tasks.map((task, index) => <ToDoField key={index} task={task} />)
-            }
+            
 
           </Box>
         </Stack>

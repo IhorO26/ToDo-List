@@ -4,7 +4,7 @@ import DoneOutlineTwoToneIcon from '@mui/icons-material/DoneOutlineTwoTone';
 import DeleteOutlineTwoToneIcon from '@mui/icons-material/DeleteOutlineTwoTone';
 
 export const ToDoField = ({ task }) => {
-  const StyledTextField = styled(TextField)(({ theme }) => ({
+  const StyledTextField = styled(TextField )(({ theme }) => ({
     '& .MuiInputBase-root': {
       borderRadius: '12px',
       border: '1px solid rgba(0, 0, 0, 0.23)',
@@ -21,7 +21,7 @@ export const ToDoField = ({ task }) => {
     <Stack display={"flex"} alignItems={"center"} paddingTop={"10px"} >
       <Box width={"800px"} display={"flex"} gap={"4px"} border={"2px solid rgba(0, 0, 0, 0.23)"} borderRadius={"15px"}
         padding={"4px"} >
-        <StyledTextField fullWidth variant="outlined" defaultValue={task} />
+        <StyledTextField fullWidth variant="outlined" defaultValue={task}   InputProps={{ readOnly: true, }}/>
         <ButtonComponent color={"success"} variant={"outlined"} icon={<DoneOutlineTwoToneIcon />} />
         <ButtonComponent color={"error"} variant={"outlined"} icon={<DeleteOutlineTwoToneIcon />} />
       </Box>

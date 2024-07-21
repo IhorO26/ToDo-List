@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 export const SettingsTab = () => {
    return (
       <Box>
-         <SettingsApplicationsSharpIcon />
+         <SettingsApplicationsSharpIcon  />
       </Box>
    )
 }
