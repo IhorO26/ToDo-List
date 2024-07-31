@@ -3,7 +3,7 @@ import { ButtonComponent } from "../Button"
 import DoneOutlineTwoToneIcon from '@mui/icons-material/DoneOutlineTwoTone';
 import DeleteOutlineTwoToneIcon from '@mui/icons-material/DeleteOutlineTwoTone';
 
-export const ToDoField = ({ task }) => {
+export const ToDoField = ({id, task, onDelete }) => {
   const StyledTextField = styled(TextField )(({ theme }) => ({
     '& .MuiInputBase-root': {
       borderRadius: '12px',
@@ -17,13 +17,14 @@ export const ToDoField = ({ task }) => {
       borderBottom: 'none', // Убираем нижнюю линию после фокуса
     },
   }));
+
   return (
-    <Stack display={"flex"} alignItems={"center"} paddingTop={"10px"} >
+    <Stack display={"flex"} alignItems={"center"} paddingTop={"10px"}  >
       <Box width={"800px"} display={"flex"} gap={"4px"} border={"2px solid rgba(0, 0, 0, 0.23)"} borderRadius={"15px"}
         padding={"4px"} >
-        <StyledTextField fullWidth variant="outlined" defaultValue={task}   InputProps={{ readOnly: true, }}/>
+        <StyledTextField fullWidth variant="outlined" defaultValue={task.text}   InputProps={{ readOnly: true, }}/>
         <ButtonComponent color={"success"} variant={"outlined"} icon={<DoneOutlineTwoToneIcon />} />
-        <ButtonComponent color={"error"} variant={"outlined"} icon={<DeleteOutlineTwoToneIcon />} />
+        <ButtonComponent color={"error"} variant={"outlined"} icon={<DeleteOutlineTwoToneIcon />} onClick={() => onDelete(task.id)} />
       </Box>
     </Stack>
   );

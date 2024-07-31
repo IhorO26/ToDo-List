@@ -7,10 +7,11 @@ import { useState } from "react";
 import { ToDoField } from "../ToDoField";
 
 
+
 export const ToDoInput = ({ name, addNewTask }) => {
     const [task, setTask] = useState('')
     const [tasks, setTasks] = useState([]);
-
+    
 
     const handleInputChange = (event) =>{
         setTask(event.target.value)
@@ -18,10 +19,16 @@ export const ToDoInput = ({ name, addNewTask }) => {
 
     const onClick = () => {
         if (task.trim()) {
-            setTasks([task, ...tasks]);
+            const newTask = { id: Date.now(), text: task}
+            setTasks([newTask, ...tasks]);
             setTask('');
         }
     };
+    const onDelete = (taskId) =>{
+        console.log(task.id);
+        console.log(taskId);
+        setTasks(tasks.filter(task => task.id !== taskId));
+    } 
     return (<Stack display={"flex"} alignItems={"center"} paddingTop={"50px"}
         paddingBlockEnd={"40px"}>
         <Box >
@@ -35,8 +42,8 @@ export const ToDoInput = ({ name, addNewTask }) => {
             <ButtonComponent onClick = {onClick} variant="outlined" icon={<AddTwoToneIcon />} />
         </Box>
         <Box width={"600px"} marginTop={"20px"}>
-                {tasks.map((task, index) => (
-                    <ToDoField key={index} task={task} />
+                {tasks.map(task => (
+                    <ToDoField key={task.id} task={task} onDelete={onDelete} />
                 ))}
             </Box>
     </Stack>
