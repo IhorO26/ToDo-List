@@ -25,10 +25,15 @@ export const ToDoInput = ({ name, addNewTask }) => {
         }
     };
     const onDelete = (taskId) =>{
-        console.log(task.id);
-        console.log(taskId);
         setTasks(tasks.filter(task => task.id !== taskId));
-    } 
+    };
+    const handleKeyPress = (event) =>{
+        if(event.key === 'Enter')
+            onClick();
+    }
+    const onDone = (taskId) => {
+        
+    };
     return (<Stack display={"flex"} alignItems={"center"} paddingTop={"50px"}
         paddingBlockEnd={"40px"}>
         <Box >
@@ -38,12 +43,12 @@ export const ToDoInput = ({ name, addNewTask }) => {
             <Typography fontSize={"35px"}>What's the plans for today?</Typography>
         </Box>
         <Box width={"600px"} display={"flex"}>
-            <TextField fullWidth label="What To Do?" value={task} onChange={handleInputChange} variant="standard" sx={{ borderRadius: '12px' } }  />
+            <TextField fullWidth label="What To Do?" value={task} onChange={handleInputChange} variant="standard" onKeyDown={handleKeyPress} sx={{ borderRadius: '12px' } }  />
             <ButtonComponent onClick = {onClick} variant="outlined" icon={<AddTwoToneIcon />} />
         </Box>
         <Box width={"600px"} marginTop={"20px"}>
                 {tasks.map(task => (
-                    <ToDoField key={task.id} task={task} onDelete={onDelete} />
+                    <ToDoField key={task.id} task={task} onDelete={onDelete} onDone={onDone} />
                 ))}
             </Box>
     </Stack>

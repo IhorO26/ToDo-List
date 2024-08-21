@@ -2,9 +2,15 @@ import { Box, Button, Icon, Stack, TextField, styled } from "@mui/material"
 import { ButtonComponent } from "../Button"
 import DoneOutlineTwoToneIcon from '@mui/icons-material/DoneOutlineTwoTone';
 import DeleteOutlineTwoToneIcon from '@mui/icons-material/DeleteOutlineTwoTone';
+import { useState } from "react";
 
-export const ToDoField = ({id, task, onDelete }) => {
-  const StyledTextField = styled(TextField )(({ theme }) => ({
+export const ToDoField = ({ id, task, onDelete, onDone, }) => {
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  const handleDoneClick = () => {
+    setIsCompleted(!isCompleted);
+  };
+  const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiInputBase-root': {
       borderRadius: '12px',
       border: '1px solid rgba(0, 0, 0, 0.23)',
@@ -17,14 +23,37 @@ export const ToDoField = ({id, task, onDelete }) => {
       borderBottom: 'none', // Убираем нижнюю линию после фокуса
     },
   }));
-
   return (
     <Stack display={"flex"} alignItems={"center"} paddingTop={"10px"}  >
-      <Box width={"800px"} display={"flex"} gap={"4px"} border={"2px solid rgba(0, 0, 0, 0.23)"} borderRadius={"15px"}
-        padding={"4px"} >
-        <StyledTextField fullWidth variant="outlined" defaultValue={task.text}   InputProps={{ readOnly: true, }}/>
-        <ButtonComponent color={"success"} variant={"outlined"} icon={<DoneOutlineTwoToneIcon />} />
-        <ButtonComponent color={"error"} variant={"outlined"} icon={<DeleteOutlineTwoToneIcon />} onClick={() => onDelete(task.id)} />
+      <Box 
+      width={"800px"} 
+      display={"flex"} 
+      gap={"4px"} 
+      border={"2px solid rgba(0, 0, 0, 0.23)"} 
+      borderRadius={"15px"}
+        padding={"4px"}
+        bgcolor={isCompleted ? "lightgreen" : "white"} // Меняем цвет фона при завершении
+        sx={{
+          textDecoration: isCompleted ? 'line-through' : 'none' // Перечёркиваем текст при завершении
+        }}
+        >
+        <StyledTextField fullWidth 
+        variant="outlined" 
+        defaultValue={task.text} 
+        InputProps={{ readOnly: true, }} 
+        />
+        <ButtonComponent 
+        color={"success"} 
+        variant={"outlined"} 
+        icon={<DoneOutlineTwoToneIcon />} 
+        onClick={handleDoneClick} 
+        />
+        <ButtonComponent 
+        color={"error"} 
+        variant={"outlined"} 
+        icon={<DeleteOutlineTwoToneIcon />} 
+        onClick={() => onDelete(task.id)} 
+        />
       </Box>
     </Stack>
   );
