@@ -1,16 +1,13 @@
-import { Button } from "@mui/base"
-import { ButtonBase, Stack, TextField, Typography } from "@mui/material"
-import { useState } from "react"
+import React, { useState } from 'react';
 
-export const UserForm = () =>{
-    const [color,setColor] = useState(true);
-  
+const Toggle = () => {
+  const [click, setClick] = useState(false);
 
-    return(
-        <Stack>
-        <Button onClick={()=> setClick(click+1)}>+</Button>
-        <Typography>{click}</Typography>
-        </Stack>
+  return (
+    <button onClick={() => setClick(!click)}>
+      {click ? "ON" : "OFF"}
+    </button>
+  );
+};
 
-    )
-}
+export default Toggle;

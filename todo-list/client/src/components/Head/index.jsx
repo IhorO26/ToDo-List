@@ -1,8 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material';
 import { SettingsTab } from '../SettingsTab';
 import { LanguageChange } from '../../LanguageChange';
-
-
+import { TimerComponent } from "../Timer"
 export const Head = () => {
     return(
         <Stack  height={"100px"} 
@@ -16,7 +15,7 @@ export const Head = () => {
         alignItems={"center"} 
         justifyContent={"flex-start"} 
         flex={1}>
-          <Typography color={"white"} paddingLeft={"10px"}>Time</Typography>
+          <TimerComponent></TimerComponent>
           </Box>
           <Box 
           justifyContent={"center"}

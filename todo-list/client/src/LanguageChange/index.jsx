@@ -1,10 +1,12 @@
 import LanguageIcon from '@mui/icons-material/Language';
-import { Box } from '@mui/material';
+import { Box, Tooltip } from '@mui/material';
 
 export const LanguageChange = () => {
     return (
         <Box>
-            <LanguageIcon fontSize='Large' />
+            <Tooltip title="Select Language" arrow>
+            <LanguageIcon sx={{fontSize:"40px"}} />
+            </Tooltip>
         </Box>
     )
 }
